@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "name": "prisma2",
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@now/node@canary",
+      "config": {
+        "maxLambdaSize": "25mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.ts"
+    }
+  ],
+  "env": {
+    "MYSQL_URL": "@mysql_url"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend test for prisma2 now with nexus nexus-prisma apollo-server",
+  "dependencies": {
+    "@prisma/client": "2.0.0-preview020.3",
+    "apollo-server": "2.9.16",
+    "graphql": "14.6.0",
+    "nexus": "0.12.0-rc.9",
+    "nexus-prisma": "0.9.0",
+    "@types/node-fetch": "2.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "12.12.17",
+    "prisma2": "2.0.0-preview020.3",
+    "ts-node": "8.5.4",
+    "ts-node-dev": "1.0.0-pre.44",
+    "typescript": "3.7.5"
+  },
+  "scripts": {
+    "start": "node dist/server",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && npm -s run generate && tsc",
+    "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
+    "generate:prisma": "prisma2 generate",
+    "generate:nexus": "ts-node --transpile-only src/schema",
+    "postinstall": "npm -s run generate",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/server"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "all"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "keywords": [],
+  "author": "hatchli",
+  "license": "ISC"
+}
