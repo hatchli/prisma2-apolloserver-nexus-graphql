@@ -1,0 +1,29 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "user",
+      "field": "posts",
+      "type": "post",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "user",
+      "field": "profiles",
+      "type": "profile",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "user",
+      "field": "postses"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "user",
+      "field": "profileses"
+    }
+  ]
+}

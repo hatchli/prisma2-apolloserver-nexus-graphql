@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource mysql {
+  provider = "mysql"
+  url      = "mysql://prisma:F1g+sparrow@prisma.clisj67py2b1.us-east-2.rds.amazonaws.com:3306/prisma"
+}
+
+model posts {
+  content    String?
+  created_at DateTime?
+  post_id    Int       @id @default(autoincrement())
+  published  Int?      @default(0)
+  title      String
+  author_id  users
+}
+
+model profiles {
+  bio        String?
+  profile_id Int     @id @default(autoincrement())
+  user_id    users
+}
+
+model users {
+  email      String     @unique
+  name       String?
+  role       String     @default("USER")
+  user_id    Int        @id @default(autoincrement())
+  postses    posts[]
+  profileses profiles[]
+}

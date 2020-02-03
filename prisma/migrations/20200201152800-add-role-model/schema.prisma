@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource mysql {
+  provider = "mysql"
+  url = "***"
+}
+
+model posts {
+  content    String?
+  created_at DateTime?
+  post_id    Int       @id
+  title      String
+  author_id  users
+}
+
+model profiles {
+  bio        String?
+  profile_id Int     @id
+  user_id    users
+}
+
+model users {
+  email      String     @unique
+  name       String?
+  user_id    Int        @id
+  postses    posts[]
+  profileses profiles[] 
+  role role @default(USER)
+}
+
+enum role {
+  USER
+  ADMIN
+}
